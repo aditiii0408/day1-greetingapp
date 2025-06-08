@@ -1,0 +1,66 @@
+<html>
+     <head>
+     <title> Name Greeting App </title>
+
+     <style>
+           * {margin:0; font-family: Open Sans;text-align:center;}
+           body { height: 100vh;background-color: pink;display: flex;justify-content: center;align-items: center;}
+           .container {background-color: white;padding: 40px; border-radius: 20px; display: flex; flex-direction: column; width: 400px;}
+           h1 {background-color: black;color: white;padding:10px;border-radius: 10px;font-size: 40px;}
+           input[type="text"] {font-size: 24px;padding: 10px;border-radius: 10px;border: 2px solid grey;}
+           input[type="submit"] {font-size: 24px; padding: 10px;border-radius: 10px;background-color:#ff69b4; }
+           
+     </style>
+     </head>
+<body>
+     <div class="container">
+     <h1> Greeting App </h1> <br/> <br/>
+     
+
+     <form onsubmit="show()">
+              <input type="text"  id="name"    placeholder="Enter your name" />
+              <br> <br>
+              <input type="submit" />
+     </form> <br/><br/>
+    
+     <h2 id="msg"> </h2> 
+     </div>
+
+    
+<script>
+       function show()
+       {
+          event.preventDefault();   // to stop the page from refreshing
+          let name = document.getElementById("name");
+          let msg = document.getElementById("msg");
+
+          //data validation
+          if(name.value === "") 
+{
+   alert("please enter a name");
+   msg.innerHTML="";
+   name.focus();
+   return;
+}
+          if(name.value.trim() === "")
+{
+   alert("name cannot be blank spaces");
+   msg.innerHTML="";
+   name.value="";
+   name.focus();
+   return;
+}
+
+          let d = new Date();
+          let hr = d.getHours();
+          if (hr<12)
+                    msg.innerHTML = "Good Morning " + name.value + " !";
+          else if(hr<16)
+                    msg.innerHTML = "Good Afternoon " + name.value + " !";
+          else
+                    msg.innerHTML = "Good Evening " + name.value + " !";
+}
+</script>
+</body>
+
+</html>
